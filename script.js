@@ -2,7 +2,12 @@ document.getElementById('generateBtn').addEventListener('click', function() {
     var url = document.getElementById('urlInput').value;
     if (url) {
         var qrcodeContainer = document.getElementById('qrcode');
-        qrcodeContainer.innerHTML = "";
+        
+        // Clear the container more robustly
+        while (qrcodeContainer.firstChild) {
+            qrcodeContainer.removeChild(qrcodeContainer.firstChild);
+        }
+
         var qrcode = new QRCode(qrcodeContainer, {
             text: url,
             width: 128,
@@ -13,10 +18,6 @@ document.getElementById('generateBtn').addEventListener('click', function() {
         // Wait for the QR code to be generated
         setTimeout(function() {
             var canvas = qrcodeContainer.getElementsByTagName('canvas')[0];
-            if (canvas) {
-                canvas.style.display = 'block';
-                canvas.style.margin = 'auto';
-            }
             var downloadBtn = document.getElementById('downloadBtn');
             downloadBtn.href = canvas.toDataURL('image/png');
             downloadBtn.download = 'qrcode.png';
