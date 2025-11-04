@@ -65,12 +65,9 @@ button:hover {
     border-radius: 10px;
     width: 148px; /* Ensures a square container */
     height: 148px; /* Ensures a square container */
-}
-
-#qrcode canvas,
-#qrcode img {
-    display: block !important;
-    margin: 0 auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #downloadBtn {

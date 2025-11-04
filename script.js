@@ -2,12 +2,7 @@ document.getElementById('generateBtn').addEventListener('click', function() {
     var url = document.getElementById('urlInput').value;
     if (url) {
         var qrcodeContainer = document.getElementById('qrcode');
-        
-        // Clear the container more robustly
-        while (qrcodeContainer.firstChild) {
-            qrcodeContainer.removeChild(qrcodeContainer.firstChild);
-        }
-
+        qrcodeContainer.innerHTML = "";
         var qrcode = new QRCode(qrcodeContainer, {
             text: url,
             width: 128,
